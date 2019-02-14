@@ -39,11 +39,57 @@ namespace UnitTests.GameEngine
         }
 
         [Test]
-        public void RollDice_Roll_0_Dice_10_Should_Pass()
+        public void RollDice_Roll_0_Dice_10_Should_Fail()
         {
             // Arrange
             var Roll = 0;
             var Dice = 10;
+            var ExpectedValue = 0; //Defensive check should return 0 meaning fail
+
+            // Act
+            var Actual = Crawl.GameEngine.HelperEngine.RollDice(Roll, Dice);
+
+            // Assert
+            Assert.AreEqual(ExpectedValue, Actual, TestContext.CurrentContext.Test.Name);
+        }
+
+        [Test]
+        public void RollDice_Roll_Neg1_Dice_10_Should_Fail()
+        {
+            // Arrange
+            var Roll = -1;
+            var Dice = 10;
+            var ExpectedValue = 0; //Defensive check should return 0 meaning fail
+
+            // Act
+            var Actual = Crawl.GameEngine.HelperEngine.RollDice(Roll, Dice);
+
+            // Assert
+            Assert.AreEqual(ExpectedValue, Actual, TestContext.CurrentContext.Test.Name);
+        }
+
+        [Test]
+        public void RollDice_Roll_1_Dice_Neg1_Should_Fail()
+        {
+            // Arrange
+            var Roll = 1;
+            var Dice = -1;
+            var ExpectedValue = 0; //Defensive check should return 0 meaning fail
+
+            // Act
+            var Actual = Crawl.GameEngine.HelperEngine.RollDice(Roll, Dice);
+
+            // Assert
+            Assert.AreEqual(ExpectedValue, Actual, TestContext.CurrentContext.Test.Name);
+
+        }
+
+        [Test]
+        public void RollDice_Roll_1_Dice_Zero_Should_Fail()
+        {
+            // Arrange
+            var Roll = 1;
+            var Dice = 0;
             var ExpectedValue = 0; //Defensive check should return 0 meaning fail
 
             // Act

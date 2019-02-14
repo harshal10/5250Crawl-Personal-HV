@@ -28,6 +28,12 @@ namespace Crawl.GameEngine
             }
             var myReturn = 0;
 
+            //checks for invalid value for dice
+            if (dice < 1)
+            {
+                return 0;
+            }
+
             for (var i = 0; i < rolls; i++)
             {
                 // Add one to the dice, because random is between.  So 1-10 is rnd.Next(1,11)
@@ -36,12 +42,6 @@ namespace Crawl.GameEngine
 
             return myReturn;
         }
-
-
-        //if (dice < 1)
-        //{
-        //    return 0;
-        //}
 
         //if (GameGlobals.ForceRollsToNotRandom)
         //{
