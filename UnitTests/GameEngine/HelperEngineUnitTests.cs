@@ -16,13 +16,41 @@ namespace UnitTests.GameEngine
             // Arrange
             var Roll = 1;
             var Dice = 10;
-            var Expected = 1;
 
             // Act
             var Actual = Crawl.GameEngine.HelperEngine.RollDice(Roll, Dice);
-            
+
             // Assert
-            Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
+            Assert.NotZero(Actual, TestContext.CurrentContext.Test.Name);
+        }
+
+        [Test]
+        public void RollDice_Roll_2_Dice_10_Should_Pass()
+        {
+            // Arrange
+            var Roll = 2;
+            var Dice = 10;
+
+            // Act
+            var Actual = Crawl.GameEngine.HelperEngine.RollDice(Roll, Dice);
+
+            // Assert
+            Assert.NotZero(Actual, TestContext.CurrentContext.Test.Name);
+        }
+
+        [Test]
+        public void RollDice_Roll_0_Dice_10_Should_Pass()
+        {
+            // Arrange
+            var Roll = 0;
+            var Dice = 10;
+            var ExpectedValue = 0; //Defensive check should return 0 meaning fail
+
+            // Act
+            var Actual = Crawl.GameEngine.HelperEngine.RollDice(Roll, Dice);
+
+            // Assert
+            Assert.AreEqual(ExpectedValue, Actual, TestContext.CurrentContext.Test.Name);
         }
     }
 }
