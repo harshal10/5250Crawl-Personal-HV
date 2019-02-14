@@ -34,6 +34,12 @@ namespace Crawl.GameEngine
                 return 0;
             }
 
+            //Enables forced values for rolls
+            if (GameGlobals.ForceRollsToNotRandom)
+            {
+                return GameGlobals.ForcedRandomValue * rolls;
+            }
+
             for (var i = 0; i < rolls; i++)
             {
                 // Add one to the dice, because random is between.  So 1-10 is rnd.Next(1,11)
@@ -43,9 +49,6 @@ namespace Crawl.GameEngine
             return myReturn;
         }
 
-        //if (GameGlobals.ForceRollsToNotRandom)
-        //{
-        //    return GameGlobals.ForcedRandomValue * rolls;
-        //}
-    }
+
+}
 }

@@ -8,8 +8,14 @@ namespace Crawl.Models
         // Turn on to force Rolls to be non random
         public static bool ForceRollsToNotRandom = false;
 
+        // Holds random value
+        private static int _ForcedRandomValue = 1;
+
         // What number should return for random numbers (1 is good choice...)
-        public static int ForcedRandomValue = 1;
+        public static int ForcedRandomValue
+        {
+            get => _ForcedRandomValue;
+        }
 
         // What number to use for ToHit values (1,2, 19, 20)
         public static int ForceToHitValue = 20;
@@ -29,8 +35,15 @@ namespace Crawl.Models
         public static void SetForcedRandomNumbers(int value, int hit)
         {
             ForceRollsToNotRandom = true;
-            ForcedRandomValue = value;
+            _ForcedRandomValue = value;
             ForceToHitValue = hit;
+        }
+
+        // Turn Off Random Number Gen, and use the passed in values
+        public static void SetForcedRandomNumbers(int value)
+        {
+            EnableRandomValues();
+            _ForcedRandomValue = value;
         }
 
         // Flip the Random State (false to true etc...)
@@ -40,6 +53,17 @@ namespace Crawl.Models
             ForceRollsToNotRandom = !ForceRollsToNotRandom;
         }
 
+        // Turn Random State Off
+        public static void DisableRandomValues()
+        {
+            ForceRollsToNotRandom = false;
+        }
+
+        // Turn Random State On
+        public static void EnableRandomValues()
+        {
+            ForceRollsToNotRandom = true;
+        }
 
         // Debug Settings
         public static bool EnableCriticalMissProblems = true;
