@@ -57,6 +57,24 @@ namespace Crawl.Models
         // Upgrades to a set level
         public bool ScaleLevel(int level)
         {
+            // Level of < 1 is invalid
+            if (level < 1)
+            {
+                return false;
+            }
+
+            // check for Max Level
+            if (level > LevelTable.MaxLevel)
+            {
+                return false;
+            }
+
+            // Level downgrade invalid
+            if (level < this.Level)
+            {
+                return false;
+            }
+
             // Calculate Experience Remaining based on Lookup...
             Level = level;
 
