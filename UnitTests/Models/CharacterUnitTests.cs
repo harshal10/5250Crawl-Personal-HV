@@ -87,5 +87,22 @@ namespace UnitTests.Models
             // Assert
             Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
         }
+
+        [Test]
+        public void Character_ScaleLevel_SameLevel_Should_Fail()
+        {
+            // Arrange
+            var Test = new Character();
+            int Level = 2;
+            bool Expected = false;
+
+            Test.ScaleLevel(Level); //set character level 2
+
+            // Act
+            var Actual = Test.ScaleLevel(Level);
+
+            // Assert
+            Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
+        }
     }
 }

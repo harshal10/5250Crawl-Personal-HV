@@ -75,6 +75,12 @@ namespace Crawl.Models
                 return false;
             }
 
+            // check for same level
+            if (level == this.Level)
+            {
+                return false;
+            }
+
             // Calculate Experience Remaining based on Lookup...
             Level = level;
 
