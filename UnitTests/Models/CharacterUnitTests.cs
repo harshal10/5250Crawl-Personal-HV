@@ -104,5 +104,47 @@ namespace UnitTests.Models
             // Assert
             Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
         }
+
+        [Test]
+        public void Character_ScaleLevel_Level_1_Forced_5_ShouldReturnMaxHealth_5()
+        {
+            // Arrange
+            var Test = new Character();
+            int Level = 1;
+            int Expected = 5;  // Expected value
+
+            // Turn on Forced Values
+            GameGlobals.SetForcedRandomNumbers(5);
+
+            // Act
+            var Actual = Test.ScaleLevel(Level);
+
+            // Reset
+            GameGlobals.DisableRandomValues();
+
+            // Assert
+            Assert.AreEqual(Expected, Test.GetHealthMax(), TestContext.CurrentContext.Test.Name);
+        }
+
+        [Test]
+        public void Character_ScaleLevel_Level_2_Forced_7_ShouldReturnMaxHealth_14()
+        {
+            // Arrange
+            var Test = new Character();
+            int Level = 2;
+            int Expected = 14;  // Expected MaxHealth
+
+            // Turn on Forced Values
+            GameGlobals.SetForcedRandomNumbers(7);
+
+            // Act
+            var Actual = Test.ScaleLevel(Level);
+
+            // Reset
+            GameGlobals.DisableRandomValues();
+
+            // Assert
+            Assert.AreEqual(Expected, Test.GetHealthMax(), TestContext.CurrentContext.Test.Name);
+        }
     }
 }
