@@ -21,13 +21,15 @@ namespace Crawl.GameEngine
         /// <returns></returns>
         public static int RollDice (int rolls, int dice)
         {
+
+            var myReturn = 0; //holds value for each roll
+
             //checks for invalid value for rolls
             if (rolls < 1)
             {
                 return 0;
             }
-            var myReturn = 0;
-
+           
             //checks for invalid value for dice
             if (dice < 1)
             {
